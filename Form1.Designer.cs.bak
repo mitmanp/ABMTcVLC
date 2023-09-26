@@ -1,0 +1,211 @@
+﻿namespace ABMTcVLC
+{
+    partial class frmAMBT_VLC
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAMBT_VLC));
+            this.AxVLC = new Vlc.DotNet.Forms.VlcControl();
+            this.BtnLoad = new System.Windows.Forms.Button();
+            this.BtnStart = new System.Windows.Forms.Button();
+            this.BtnStop = new System.Windows.Forms.Button();
+            this.BtnPause = new System.Windows.Forms.Button();
+            this.ChkRepeat = new System.Windows.Forms.CheckBox();
+            this.BtnLoop1 = new System.Windows.Forms.Button();
+            this.BtnLoop2 = new System.Windows.Forms.Button();
+            this.LblLoop = new System.Windows.Forms.Label();
+            this.OpenFileDlg = new System.Windows.Forms.OpenFileDialog();
+            this.Trkbar = new System.Windows.Forms.TrackBar();
+            this.Timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.AxVLC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Trkbar)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // axVLC
+            // 
+            this.AxVLC.BackColor = System.Drawing.Color.Black;
+            this.AxVLC.Location = new System.Drawing.Point(32, 61);
+            this.AxVLC.Margin = new System.Windows.Forms.Padding(4);
+            this.AxVLC.Name = "axVLC";
+            this.AxVLC.Size = new System.Drawing.Size(819, 404);
+            this.AxVLC.Spu = -1;
+            this.AxVLC.TabIndex = 0;
+            this.AxVLC.Text = "vlcControl1";
+            this.AxVLC.VlcLibDirectory = ((System.IO.DirectoryInfo)(resources.GetObject("axVLC.VlcLibDirectory")));
+            this.AxVLC.VlcMediaplayerOptions = null;
+            this.AxVLC.LengthChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerLengthChangedEventArgs>(this.AxVLC_LengthChanged);
+            this.AxVLC.MediaChanged += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerMediaChangedEventArgs>(this.AxVLC_MediaChanged);
+            this.AxVLC.Playing += new System.EventHandler<Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs>(this.AxVLC_Playing);
+            // 
+            // btnLoad
+            // 
+            this.BtnLoad.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnLoad.Location = new System.Drawing.Point(27, 11);
+            this.BtnLoad.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnLoad.Name = "btnLoad";
+            this.BtnLoad.Size = new System.Drawing.Size(100, 38);
+            this.BtnLoad.TabIndex = 1;
+            this.BtnLoad.Text = "LOAD";
+            this.BtnLoad.UseVisualStyleBackColor = false;
+            this.BtnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
+            // 
+            // btnStart
+            // 
+            this.BtnStart.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnStart.Location = new System.Drawing.Point(133, 11);
+            this.BtnStart.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnStart.Name = "btnStart";
+            this.BtnStart.Size = new System.Drawing.Size(100, 38);
+            this.BtnStart.TabIndex = 2;
+            this.BtnStart.Text = "Start";
+            this.BtnStart.UseVisualStyleBackColor = false;
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
+            // btnStop
+            // 
+            this.BtnStop.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnStop.Location = new System.Drawing.Point(239, 11);
+            this.BtnStop.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnStop.Name = "btnStop";
+            this.BtnStop.Size = new System.Drawing.Size(100, 38);
+            this.BtnStop.TabIndex = 3;
+            this.BtnStop.Text = "Stop";
+            this.BtnStop.UseVisualStyleBackColor = false;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            // 
+            // btnPause
+            // 
+            this.BtnPause.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnPause.Location = new System.Drawing.Point(343, 11);
+            this.BtnPause.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnPause.Name = "btnPause";
+            this.BtnPause.Size = new System.Drawing.Size(100, 38);
+            this.BtnPause.TabIndex = 4;
+            this.BtnPause.Text = "Pause";
+            this.BtnPause.UseVisualStyleBackColor = false;
+            this.BtnPause.Click += new System.EventHandler(this.BtnPause_Click);
+            // 
+            // chkRepeat
+            // 
+            this.ChkRepeat.AutoSize = true;
+            this.ChkRepeat.Location = new System.Drawing.Point(467, 15);
+            this.ChkRepeat.Margin = new System.Windows.Forms.Padding(4);
+            this.ChkRepeat.Name = "chkRepeat";
+            this.ChkRepeat.Size = new System.Drawing.Size(167, 29);
+            this.ChkRepeat.TabIndex = 5;
+            this.ChkRepeat.Text = "Repeat Loop";
+            this.ChkRepeat.UseVisualStyleBackColor = true;
+            this.ChkRepeat.CheckedChanged += new System.EventHandler(this.ChkRepeat_CheckedChanged);
+            // 
+            // btnLoop1
+            // 
+            this.BtnLoop1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnLoop1.Location = new System.Drawing.Point(633, 15);
+            this.BtnLoop1.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnLoop1.Name = "btnLoop1";
+            this.BtnLoop1.Size = new System.Drawing.Size(100, 38);
+            this.BtnLoop1.TabIndex = 6;
+            this.BtnLoop1.Text = "10-20";
+            this.BtnLoop1.UseVisualStyleBackColor = false;
+            this.BtnLoop1.Click += new System.EventHandler(this.BtnLoop1_Click);
+            // 
+            // btnLoop2
+            // 
+            this.BtnLoop2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnLoop2.Location = new System.Drawing.Point(751, 15);
+            this.BtnLoop2.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnLoop2.Name = "btnLoop2";
+            this.BtnLoop2.Size = new System.Drawing.Size(100, 38);
+            this.BtnLoop2.TabIndex = 7;
+            this.BtnLoop2.Text = "50-80";
+            this.BtnLoop2.UseVisualStyleBackColor = false;
+            this.BtnLoop2.Click += new System.EventHandler(this.BtnLoop2_Click);
+            // 
+            // lblLoop
+            // 
+            this.LblLoop.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.LblLoop.Location = new System.Drawing.Point(17, 601);
+            this.LblLoop.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.LblLoop.Name = "lblLoop";
+            this.LblLoop.Size = new System.Drawing.Size(418, 44);
+            this.LblLoop.TabIndex = 8;
+            // 
+            // trkbar
+            // 
+            this.Trkbar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Trkbar.Location = new System.Drawing.Point(27, 483);
+            this.Trkbar.Name = "trkbar";
+            this.Trkbar.Size = new System.Drawing.Size(824, 90);
+            this.Trkbar.TabIndex = 9;
+            // 
+            // timer1
+            // 
+            this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // frmAMBT_VLC
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1064, 672);
+            this.Controls.Add(this.Trkbar);
+            this.Controls.Add(this.LblLoop);
+            this.Controls.Add(this.BtnLoop2);
+            this.Controls.Add(this.BtnLoop1);
+            this.Controls.Add(this.ChkRepeat);
+            this.Controls.Add(this.BtnPause);
+            this.Controls.Add(this.BtnStop);
+            this.Controls.Add(this.BtnStart);
+            this.Controls.Add(this.BtnLoad);
+            this.Controls.Add(this.AxVLC);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "frmAMBT_VLC";
+            this.Text = "ABMT VLC";
+            ((System.ComponentModel.ISupportInitialize)(this.AxVLC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Trkbar)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private Vlc.DotNet.Forms.VlcControl axVLC;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.CheckBox chkRepeat;
+        private System.Windows.Forms.Button btnLoop1;
+        private System.Windows.Forms.Button btnLoop2;
+        private System.Windows.Forms.Label lblLoop;
+        private System.Windows.Forms.OpenFileDialog openFileDlg;
+        private System.Windows.Forms.TrackBar trkbar;
+        private System.Windows.Forms.Timer timer1;
+    }
+}
+

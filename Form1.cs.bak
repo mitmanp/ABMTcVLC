@@ -1,0 +1,169 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Vlc;
+using Vlc.DotNet;
+using Vlc.DotNet.Core;
+using Vlc.DotNet.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace ABMTcVLC
+{
+    public partial class FormAMBT_VLC : Form
+    {
+        public string szMedia;
+        // Define a CancellationTokenSource at the class level
+        public CancellationTokenSource cancellationTokenSource;
+        public bool bLooping;
+        public bool bRepeat;
+
+        // https://www.youtube.com/watch?v=iGowt4-nQEM
+
+        public FormAMBT_VLC()
+        {
+            InitializeComponent();
+            szMedia = "C:\\Data\\test-app\\Jhinjoti-vilambit-gat-learn.mp4";
+            AxVLC.Show();
+            Timer1.Interval = 1000;
+            // Subscribe to the media duration changed event
+            AxVLC.VlcMediaPlayer.TimeChanged += VlcMediaPlayer_TimeChanged;
+        }
+
+        private async void BtnLoad_Click(object sender, EventArgs e)
+        {
+            if (openFileDlg.ShowDialog() == DialogResult.OK)
+            {
+                szMedia = openFileDlg.FileName;
+                AxVLC.SetMedia(new Uri(szMedia));
+
+                //AxVLC.Play(new Uri(szMedia));
+                if (File.Exists("G:\\FILE_LATER\\ABMusicTrainer\\" + Path.GetFileName(szMedia) + ".loop"))
+                {
+                    LblLoop.Text = "Loop file exists";
+                }
+                else
+                {
+                    LblLoop.Text = " **NO Loop file";
+                }
+            }
+        }
+
+        private void VlcMediaPlayer_TimeChanged(object sender, VlcMediaPlayerTimeChangedEventArgs e)
+        {
+        }
+
+        private async void BtnStart_Click(object sender, EventArgs e)
+        {
+            AxVLC.Play();
+
+            Timer1.Start();
+        }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            AxVLC.Stop();
+            Timer1.Stop();
+        }
+
+        private async void BtnPause_Click(object sender, EventArgs e)
+        {
+            if (BtnPause.Text == "Pause")
+            {
+                AxVLC.Pause();
+                BtnPause.Text = "Play";
+            }
+            else
+            {
+                AxVLC.Play();
+                BtnPause.Text = "Pause";
+            }
+        }
+
+        private async void BtnLoop1_Click(object sender, EventArgs e)
+        {
+            doLoop(10 * 1000, 20 * 1000);
+        }
+
+        private async void BtnLoop2_Click(object sender, EventArgs e)
+        {
+            doLoop(50 * 1000, 80 * 1000);
+        }
+
+        private async void ChkRepeat_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void doLoop(int tStart, int tEnd)
+        {
+            // Stop if playing or in a loop
+            //doStop();
+            
+            AxVLC.Time = tStart;
+            AxVLC.Play();
+            // Create a new CancellationTokenSource
+            cancellationTokenSource = new CancellationTokenSource();
+
+            try
+            {
+                await Task.Delay((tEnd - tStart), cancellationTokenSource.Token);
+                //if bRepeat then
+                AxVLC.Stop();
+            }
+            catch (TaskCanceledException)
+            {
+                // This will be thrown if the CancellationToken is cancelled before the delay completes.
+                // You can ignore this or handle it as needed.
+            }
+            bLooping = true;
+        }
+
+        private async void doStop() // stops the player
+        {
+            try
+            {
+                cancellationTokenSource?.Cancel();
+            }
+            catch { }
+            AxVLC.Stop();
+            bLooping = false;
+            bRepeat = false;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (AxVLC.State == Vlc.DotNet.Core.Interops.Signatures.MediaStates.Playing)
+            {
+                Trkbar.Value = (int)AxVLC.Time / 1000; // Convert milliseconds to seconds
+            }
+        }
+
+        private void AxVLC_Playing(object sender, VlcMediaPlayerPlayingEventArgs e)
+        {
+            // Get the media duration in milliseconds
+            long durationInMilliseconds = AxVLC.VlcMediaPlayer.Length;
+        }
+
+        private void AxVLC_LengthChanged(object sender, VlcMediaPlayerLengthChangedEventArgs e)
+        {
+            // Get the media duration in milliseconds
+            long durationInMilliseconds = AxVLC.VlcMediaPlayer.Length;
+
+            // Convert duration to seconds
+            int durationInSeconds = (int)(durationInMilliseconds / 1000);
+            Trkbar.Maximum = durationInSeconds;
+        }
+
+        private void AxVLC_MediaChanged(object sender, VlcMediaPlayerMediaChangedEventArgs e)
+        {
+        }
+    }
+}
